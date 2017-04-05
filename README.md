@@ -1,5 +1,6 @@
 # yii2-sms-module
-xyz.
+xyz.  
+
 module config:
 
 ```php
