@@ -185,7 +185,7 @@ class Sms extends ActiveRecord
         //插入发送记录到库中
         $smsId = $this->addTask($mobile, $content, $veriyCode, $templateId, 'web');
         if (!$smsId) {
-            $errorMsg = 'failed to add sms task:' . implode(',', array_values($this->getErrors()));
+            $errorMsg = 'failed to add sms task:';
             return false;
         }
         $sendRs = $this->doSend($mobile, $content, $templateId, $errorMsg);
@@ -332,7 +332,7 @@ class Sms extends ActiveRecord
      */
     public function sendNotice($mobile, $content = '', $templateId = null) {
         $errorMsg = '';
-        $rs = self::send(self::CHANNEL_TYPE_NOTICE, $mobile,'', $templateId, $errorMsg);
+        $rs = self::send($mobile, $content, '', $templateId, $errorMsg);
         if (!$rs) {
             $this->addError('id', $errorMsg);
         }
